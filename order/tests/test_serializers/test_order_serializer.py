@@ -1,0 +1,39 @@
+from django.test import TestCase
+
+from order.factories import OrderFactory, ProductFactory
+from order.serializers import OrderSerializer
+
+class TestOrderSerializer(TestCase):
+    def setUp(self) -> None:
+        self.product_1 = ProductFactory()
+        self.product_2 = ProductFactory()
+
+        self.order = OrderFactory(product=(self.product_1, self.product_2))
+        self.order_serializer = OrderSerializer(self.order)
+
+    def test_order_serializer(self):
+        serializer_data = self.order_serializer.data
+        self.assertEqual(
+            serializer_data["product"][0]["title"], self.product_1.title)
+        self.assertEqual(
+            serializer_data["product"][1]["title"], self.product_2.title)
+
+# import pytest
+# from django.contrib.auth.models import User
+# from order.models import Order
+# from order.serializers import OrderSerializer
+
+# @pytest.mark.django_db
+# def test_order_serializer():
+#     user = User.objects.create(username="testuser", password="testpassword")
+    
+#     order = Order.objects.create(user=user)
+    
+#     serializer = OrderSerializer(order)
+    
+#     expected_data = {
+#         'product': [],
+#         'total': 0.0
+#     }
+    
+#     assert serializer.data == expected_data
