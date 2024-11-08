@@ -3,6 +3,7 @@ from django.test import TestCase
 from order.factories import OrderFactory, ProductFactory
 from order.serializers import OrderSerializer
 
+
 class TestOrderSerializer(TestCase):
     def setUp(self) -> None:
         self.product_1 = ProductFactory()
@@ -13,10 +14,9 @@ class TestOrderSerializer(TestCase):
 
     def test_order_serializer(self):
         serializer_data = self.order_serializer.data
-        self.assertEqual(
-            serializer_data["product"][0]["title"], self.product_1.title)
-        self.assertEqual(
-            serializer_data["product"][1]["title"], self.product_2.title)
+        self.assertEqual(serializer_data["product"][0]["title"], self.product_1.title)
+        self.assertEqual(serializer_data["product"][1]["title"], self.product_2.title)
+
 
 # import pytest
 # from django.contrib.auth.models import User
@@ -26,14 +26,14 @@ class TestOrderSerializer(TestCase):
 # @pytest.mark.django_db
 # def test_order_serializer():
 #     user = User.objects.create(username="testuser", password="testpassword")
-    
+
 #     order = Order.objects.create(user=user)
-    
+
 #     serializer = OrderSerializer(order)
-    
+
 #     expected_data = {
 #         'product': [],
 #         'total': 0.0
 #     }
-    
+
 #     assert serializer.data == expected_data

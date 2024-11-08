@@ -16,8 +16,8 @@ class TestProductSerializer(TestCase):
         serializer_data = self.product_serializer.data
         self.assertEqual(serializer_data["price"], 100)
         self.assertEqual(serializer_data["title"], "mouse")
-        self.assertEqual(
-            serializer_data["category"][0]["title"], "technology")
+        self.assertEqual(serializer_data["category"][0]["title"], "technology")
+
 
 # import pytest
 # from product.models import Product, Category
@@ -34,11 +34,11 @@ class TestProductSerializer(TestCase):
 #         price=150,
 #         active=True
 #     )
-    
+
 #     product.category.set([category1, category2])
 
 #     serializer = ProductSerializer(product)
-    
+
 #     expected_data = {
 #         'title': 'Produto Teste',
 #         'description': 'Descrição do produto de teste',
