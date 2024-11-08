@@ -14,6 +14,7 @@ class TestCategorySerializer(TestCase):
 
         self.assertEqual(serializer_data["title"], "food")
 
+
 # import pytest
 # from product.models.category import Category
 # from product.serializers import CategorySerializer
@@ -28,7 +29,7 @@ class TestCategorySerializer(TestCase):
 #     )
 
 #     serializer = CategorySerializer(category)
-    
+
 #     expected_data = {
 #         'title': 'Eletrônicos',
 #         'slug': 'eletronicos',
